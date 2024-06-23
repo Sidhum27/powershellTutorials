@@ -1,11 +1,9 @@
 # Fetch-SqlData.ps1
 
 # Function to check if a module is installed
-function Ensure-Module {
-    param (
-        [string]$ModuleName
-    )
-    
+ function Install-Moduleifneeded (
+        [string]$ModuleName)
+    {
     if (-not (Get-Module -ListAvailable -Name $ModuleName)) {
         Write-Output "$ModuleName module not found. Installing..."
         Install-Module -Name $ModuleName -Force -Scope CurrentUser
